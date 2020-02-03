@@ -1,12 +1,12 @@
 import React from 'react';
-import './App.css';
-
-import PrivateRoute from './'
+import PrivateRoute from './privateRoute.js/PrivateRoute';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('token';))
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('token'));
+
+  console.log('Logged in', isLoggedIn);
   return (
-    <div className="App">
+    <div>
       Sauti Studio
     </div>
   );
