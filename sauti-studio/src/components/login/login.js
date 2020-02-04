@@ -4,12 +4,15 @@ import loginImg from "../../login.svg";
 export class Login extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props);
   }
+
+
 
   render() {
     return (
-      <div className="base-container" ref={this.props.containerRef}>
-        <div className="header">Login</div>
+      <form className="base-container" ref={this.props.containerRef}>
+        <div className="header">Login</div> <br/>
         <div className="content">
           <div className="image">
             <img src={loginImg} />
@@ -30,7 +33,7 @@ export class Login extends React.Component {
             Login
           </button>
         </div>
-      </div>
+      </form>
     );
   }
 }
