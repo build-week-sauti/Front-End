@@ -1,5 +1,5 @@
 import axios from "axios";
-import { axiosWithAuth } from "../localStorage/axiosWithAuth";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 // Action types.
 export const FETCH_DATA_START = "FETCH_DATA_START";
