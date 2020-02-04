@@ -3,6 +3,9 @@ import "./App.css";
 import Login from "./components/login/login";
 import Register from "./components/login/register";
 
+//import style from "./components/login/style.css";
+//import PrivateRoute from './privateRoute.js/PrivateRoute';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
