@@ -2,7 +2,6 @@ import React from "react";
 import "./App.css";
 import Login from "./components/login/login";
 import Register from "./components/login/register";
-//import style from "./components/login/style.css";
 
 class App extends React.Component {
   constructor(props) {
@@ -21,11 +20,11 @@ class App extends React.Component {
     const { isLogginActive } = this.state;
 
     if (isLogginActive) {
-      this.rightSide.classList.remove("right");
-      this.rightSide.classList.add("left");
+      //this.rightSide.classList.remove("right");
+      //this.rightSide.classList.add("left");
     } else {
-      this.rightSide.classList.remove("left");
-      this.rightSide.classList.add("right");
+     // this.rightSide.classList.remove("left");
+     // this.rightSide.classList.add("right");
     }
     this.setState(prevState => ({ isLogginActive: !prevState.isLogginActive }));
   }
@@ -34,6 +33,7 @@ class App extends React.Component {
     const { isLogginActive } = this.state;
     const current = isLogginActive ? "Register" : "Login";
     const currentActive = isLogginActive ? "login" : "register";
+
     return (
       <div className="App">
         <div className="login">
@@ -45,6 +45,7 @@ class App extends React.Component {
               <Register containerRef={ref => (this.current = ref)} />
             )}
           </div>
+
           <RightSide
             current={current}
             currentActive={currentActive}
@@ -70,5 +71,7 @@ const RightSide = props => {
     </div>
   );
 };
+
+
 
 export default App;

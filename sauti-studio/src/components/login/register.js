@@ -12,11 +12,15 @@ export class Register extends React.Component {
           <div className="image">
             <img src={loginImg} alt="africa img"/>
           </div>
+
+
           <div className="form">
             <div className="form-group">
               <label htmlFor="username">Username</label>
               <input type="text" name="username" placeholder="username" />
             </div>
+
+
             <div className="form-group">
               <label htmlFor="email">Email</label>
               <input type="text" name="email" placeholder="email" />
@@ -27,6 +31,8 @@ export class Register extends React.Component {
             </div>
           </div>
         </div>
+
+
         <div className="footer">
           <button type="button" className="btn">
             Register
