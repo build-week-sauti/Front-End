@@ -1,7 +1,9 @@
-import React from "react";
+import React/*, {useState}*/ from "react";
 import "./App.css";
 import Login from "./components/login/login";
 import Register from "./components/login/register";
+//import TeamList from './components/login/user';
+//import NoteForm from './components/login/form';
 
 //import style from "./components/login/style.css";
 //import PrivateRoute from './privateRoute.js/PrivateRoute';
@@ -75,6 +77,28 @@ const RightSide = props => {
   );
 };
 
+// Create function app
+
+  /*const [teamList, setTeamList] = useState([
+    {
+      id: 1,
+      name: 'Daniel',
+      email: 'daniel@nowhere.com',
+      role: 'Full Stack Web Developer'
+    }
+  ]);
+
+  const addNewTeamMember = member => {
+    const newMember = {
+      id: Date.now(),
+      name: member.name,
+      email: member.email,
+      role: member.role
+    };
+    setTeamList([...teamList, newMember]);
+  }*/
+
+  
 
 
 export default App;
