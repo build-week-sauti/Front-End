@@ -66,7 +66,7 @@ export const deleteFlow = flow => dispatch => {
   dispatch({ type: DELETE_DATA_START });
 
   axiosWithAuth()
-    .delete(`https://reqres.in/api/unknown/${flow.id}`)
+    .delete(`https://reqres.in/api/unknown/${flow.id}`) //this api needs to be changes as well
     .then(res => {
       console.log("deleted item", res.data);
       dispatch({ type: DELETE_DATA_SUCCESS, payload: res.data });
