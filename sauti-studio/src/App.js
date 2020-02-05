@@ -1,7 +1,15 @@
+
 import React, { useState } from "react";
 import { Route } from "react-router-dom";
 import "./App.css";
 import PrivateRoute from "./utils/PrivateRoute";
+
+//import Login from "./components/login/login";
+//import Register from "./components/login/register";
+//import TeamList from './components/login/user';
+//import NoteForm from './components/login/form';
+//import style from "./components/login/style.css";
+
 
 import LoginForm from "./componentReactTwo/loginForm";
 import RegisterForm from "./componentReactTwo/registerForm";
@@ -17,7 +25,6 @@ function App() {
     </div>
   )
 }
-
 export default App;
 /*
  class App extends React.Component {
