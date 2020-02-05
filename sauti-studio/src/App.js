@@ -8,9 +8,7 @@ import RegisterForm from "./componentReactTwo/registerForm";
 import Dashboard from "./componentReactTwo/dashboard";
 
 function App() {
-  const [isloggedIn, setIsLoggedIn] = useState(window.localStorage.getItem('token'));
 
-  console.log('Logged in', isloggedIn);
   return (
     <div>
       <Route exact path="/" component={LoginForm} />
