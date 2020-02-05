@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import loginImg from "../../login.svg";
 
 export class Login extends React.Component {
@@ -38,4 +38,4 @@ export class Login extends React.Component {
   }
 }
 
-export default Login;
+export default Login;*/

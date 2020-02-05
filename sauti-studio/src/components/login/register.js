@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import loginImg from "../../login.svg";
 
 export class Register extends React.Component {
@@ -6,7 +6,7 @@ export class Register extends React.Component {
 
   render() {
     return (
-      <div className="base-container" ref={this.props.containerRef}><br />
+      <div className="base-container" ref={this.props.containerRef}>
         <div className="header">Register</div>
         <div className="content">
           <div className="image">
@@ -44,3 +44,4 @@ export class Register extends React.Component {
 }
 
 export default Register;
+*/
