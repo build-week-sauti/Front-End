@@ -70,7 +70,7 @@ const NewUser = props => {
     console.log("Register:", NewUser);
     e.preventDefault();
     axios
-      .post("https://sauti-studio-3.herokuapp.com/api/auth/register", NewUser)
+      .post("https://auth-friends-backend.herokuapp.com/api/friends", NewUser)
       .then(res => {
         console.log(res);
         localStorage.setItem("token", res.data.payload);

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Route, Link } from "react-router-dom";
 
 const LoginForm = (props) => {
   const [login, setLogin] = useState({
@@ -19,7 +18,7 @@ const LoginForm = (props) => {
     console.log("login: ", login);
     event.preventDefault();
     axios
-      .post("https://sauti-studio-3.herokuapp.com/api/auth/login", login)
+      .post("https://auth-friends-backend.herokuapp.com/api/login ", login)
       .then(res => {
         console.log(res);
         localStorage.setItem("token", res.data.payload);
