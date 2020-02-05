@@ -1,5 +1,4 @@
 import axios from "axios";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 // Action types.
 export const LOGIN_START = "LOGIN_START";
@@ -44,10 +43,10 @@ export const loginFail = error => ({
 });
 
 function axiosLogin() {
-  const clientId = "cameron";
-  const clientSecret = "hauer";
+  const clientId = "Sauti";
+  const clientSecret = "Sauti";
   return axios.create({
-    baseURL: "https://auth-friends-backend.herokuapp.com/api/login",
+    baseURL: "https://sauti-studios-bw.herokuapp.com/api/auth/login",
     headers: {
       Authorization: `Basic ${btoa(`${clientId}:${clientSecret}`)}`,
       "Content-Type": "application/json"
@@ -60,14 +59,14 @@ export const login = user => {
     axiosLogin()
       .post(
         "/",
-        `grant_type=password&username=${user.username}&password=${user.password}`
+        `grant_type=password&name=${user.name}&password=${user.password}`
       )
       .then(response => {
         dispatch(loginSuccess(response.data));
         console.log("LOGIN SUCCESS", response.data);
         localStorage.setItem("token", response.data.access_token);
         localStorage.setItem("token_type", response.data.token_type);
-        localStorage.setItem("username", user.username);
+        localStorage.setItem("username", user.name);
       })
       .catch(error => {
         dispatch(loginFail(error.response));
@@ -100,7 +99,7 @@ export const signUp = user => {
   return dispatch => {
     dispatch(createUserStart());
     axios
-      .post("https://auth-friends-backend.herokuapp.com/api/friends", user)
+      .post("https://sauti-studios-bw.herokuapp.com/api/auth/register", user)
       .then(response => {
         console.log("SIUGNUP SUCCESS", response);
         dispatch(createUserSuccess(response.data));

@@ -1,9 +1,13 @@
 import React from "react";
 
+
 function Dashboard () {
     return (
         <div>
-            <h1>Dashboard Form</h1>
+            <header>
+                <h1>Dashboard</h1>
+            </header>
+            <button><span>CREATE A NEW WORKFLOW</span></button>
         </div>
     )
 }

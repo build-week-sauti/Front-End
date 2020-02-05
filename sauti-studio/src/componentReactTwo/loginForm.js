@@ -3,7 +3,7 @@ import axios from "axios";
 
 const LoginForm = (props) => {
   const [login, setLogin] = useState({
-    username: "",
+    name: "",
     password: ""
   });
 
@@ -18,7 +18,7 @@ const LoginForm = (props) => {
     console.log("login: ", login);
     event.preventDefault();
     axios
-      .post("https://auth-friends-backend.herokuapp.com/api/login", login)
+      .post("https://sauti-studios-bw.herokuapp.com/api/auth/login", login)
       .then(res => {
         console.log(res);
         localStorage.setItem("token", res.data.payload);
@@ -39,14 +39,14 @@ const LoginForm = (props) => {
       <h1>Log in to Sauti Studio</h1>
 
       <form onSubmit={e => handleSubmit(e)}>
-        <label htmlFor="username">
-            Username: 
+        <label htmlFor="name">
+            Name: 
         <input
           type="text"
-          name="username"
-          value={login.username}
-          id="username"
-          placeholder="Enter username"
+          name="name"
+          value={login.name}
+          id="name"
+          placeholder="Enter name"
           onChange={handleChange}
           required
         />

@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { signUp } from "../actions/index";
 import axios from "axios";
@@ -56,8 +55,7 @@ const StyledButton = styled.button`
 const NewUser = props => {
   const [user, setUser] = useState([]);
   const [userInfo, setUserInfo] = useState({
-    username: "",
-    primaryemail: "",
+    name: "",
     password: ""
   });
   const handleChange = e => {
@@ -70,7 +68,7 @@ const NewUser = props => {
     console.log("Register:", NewUser);
     e.preventDefault();
     axios
-      .post("https://auth-friends-backend.herokuapp.com/api/friends", NewUser)
+      .post("https://sauti-studios-bw.herokuapp.com/api/auth/register", NewUser)
       .then(res => {
         console.log(res);
         localStorage.setItem("token", res.data.payload);
@@ -97,36 +95,27 @@ const NewUser = props => {
           <StyledForm>
             <StyledDiv>
               <FormDiv>
-                <StyledEntry>Username</StyledEntry>
+                <StyledEntry>Name</StyledEntry>
                 <Field
                   type="text"
-                  name="username"
-                  placeholder="username"
+                  name="name"
+                  placeholder="name"
                   onChange={handleChange}
-                  value={userInfo.username}
+                  value={userInfo.name}
                   required
                 />
               </FormDiv>
               <FormDiv>
-                <StyledEntry>Email</StyledEntry>
+                <StyledEntry>Password</StyledEntry>
                 <Field
-                  type="email"
-                  name="primaryemail"
-                  placeholder="Example@gmail.com"
+                  type="password"
+                  name="password"
+                  placeholder="●●●●●●●●"
                   onChange={handleChange}
-                  value={userInfo.primaryemail}
+                  value={userInfo.password}
                   required
                 />
               </FormDiv>
-              <StyledEntry>Password</StyledEntry>
-              <Field
-                type="password"
-                name="password"
-                placeholder="●●●●●●●●"
-                onChange={handleChange}
-                value={userInfo.password}
-                required
-              />
             </StyledDiv>
             <StyledButton type="submit">Next</StyledButton>
             <button onClick={handleLogin}>Already Have An Account?</button>
@@ -138,20 +127,16 @@ const NewUser = props => {
 };
 
 const FormikNewUser = withFormik({
-  mapPropsToValues({ username, primaryemail, password }) {
+  mapPropsToValues({ name, password }) {
     return {
-      username: username || "",
-      primaryemail: primaryemail || "",
+      name: name || "",
       password: password || ""
     };
   },
 
   validationSchema: Yup.object().shape({
-    username: Yup.string()
+    name: Yup.string()
       .min(3, "Name must have more than 3 characters.")
-      .required("Required field."),
-    primaryemail: Yup.string()
-      .email("Email not valid.")
       .required("Required field."),
     password: Yup.string()
       .min(3, "Password must have at least 3 characters.")

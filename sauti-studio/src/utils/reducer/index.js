@@ -21,9 +21,8 @@ import {
 } from "../../actions";
 
 const initialState = {
-  username: "",
-  password: "",
-  primaryemail: "",
+  name: "",
+  password: ""
  /* flows: [],
   isFetching: false,
   error: null,
@@ -36,9 +35,8 @@ const reducer = (state = initialState, action) => {
     case CREATE_USER_START: {
         return {
             ...state,
-            username: action.payload,
-            password: action.payload,
-            primaryemail: action.payload
+            name: action.payload,
+            password: action.payload
         };
     }
     case CREATE_USER_SUCCESS: {
@@ -55,7 +53,7 @@ const reducer = (state = initialState, action) => {
     case LOGIN_START: {
       return {
         ...state,
-        username: action.payload,
+        name: action.payload,
         password: action.payload
       };
     }
