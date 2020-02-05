@@ -18,7 +18,7 @@ const LoginForm = (props) => {
     console.log("login: ", login);
     event.preventDefault();
     axios
-      .post("https://auth-friends-backend.herokuapp.com/api/login ", login)
+      .post("https://auth-friends-backend.herokuapp.com/api/login", login)
       .then(res => {
         console.log(res);
         localStorage.setItem("token", res.data.payload);

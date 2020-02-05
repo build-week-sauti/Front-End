@@ -6,7 +6,7 @@ import {
   CREATE_USER_START,
   CREATE_USER_SUCCESS,
   CREATE_USER_FAIL,
-
+/*
   FETCH_DATA_START,
   FETCH_DATA_SUCCESS,
   FETCH_DATA_FAIL,
@@ -17,18 +17,18 @@ import {
 
   DELETE_DATA_START,
   DELETE_DATA_SUCCESS,
-  DELETE_DATA_FAIL
+  DELETE_DATA_FAIL*/
 } from "../../actions";
 
 const initialState = {
   username: "",
   password: "",
   primaryemail: "",
-  flows: [],
+ /* flows: [],
   isFetching: false,
   error: null,
   isAdded: false,
-  isDeleting: false
+  isDeleting: false*/
 };
 
 const reducer = (state = initialState, action) => {
@@ -69,7 +69,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         error: action.payload
       };
-    }
+    }/*
     case FETCH_DATA_START: {
       return {
         ...state,
@@ -159,7 +159,7 @@ const reducer = (state = initialState, action) => {
         isAdded: false,
         isDeleting: false
       };
-    }
+    }*/
     default:
       return state;
   }

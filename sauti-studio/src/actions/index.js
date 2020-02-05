@@ -9,7 +9,7 @@ export const LOGIN_FAIL = "LOGIN_FAIL";
 export const CREATE_USER_START = "CREATE_USER_START";
 export const CREATE_USER_SUCCESS = "CREATE_USER_SUCCESS";
 export const CREATE_USER_FAIL = "CREATE_USER_FAIL";
-
+/*
 export const FETCH_DATA_START = "FETCH_DATA_START";
 export const FETCH_DATA_SUCCESS = "FETCH_DATA_SUCCESS";
 export const FETCH_DATA_FAIL = "FETCH_DATA_FAIL";
@@ -25,7 +25,7 @@ export const DELETE_DATA_FAIL = "DELETE_DATA_FAIL";
 export const APPROVE_FLOW_START = "APPROVE_FLOW_START";
 export const APPROVE_FLOW_SUCCESS = "APPROVE_FLOW_SUCCESS";
 export const APPROVE_FLOW_FAIL = "APPROVE_FLOW_FAIL";
-
+*/
 // Create actions
 //LOGIN
 export const loginStart = data => ({
@@ -47,7 +47,7 @@ function axiosLogin() {
   const clientId = "cameron";
   const clientSecret = "hauer";
   return axios.create({
-    baseURL: "https://sauti-studio-3.herokuapp.com/api/auth/login",
+    baseURL: "https://auth-friends-backend.herokuapp.com/api/login",
     headers: {
       Authorization: `Basic ${btoa(`${clientId}:${clientSecret}`)}`,
       "Content-Type": "application/json"
@@ -59,7 +59,7 @@ export const login = user => {
   return dispatch => {
     axiosLogin()
       .post(
-        "/login",
+        "/",
         `grant_type=password&username=${user.username}&password=${user.password}`
       )
       .then(response => {
@@ -100,7 +100,7 @@ export const signUp = user => {
   return dispatch => {
     dispatch(createUserStart());
     axios
-      .post("https://sauti-studio-3.herokuapp.com/api/auth/register", user)
+      .post("https://auth-friends-backend.herokuapp.com/api/friends", user)
       .then(response => {
         console.log("SIUGNUP SUCCESS", response);
         dispatch(createUserSuccess(response.data));
@@ -113,7 +113,7 @@ export const signUp = user => {
       });
   };
 };
-
+/*
 export const fetchFlow = () => dispatch => {
   dispatch({ type: FETCH_DATA_START });
 
@@ -171,3 +171,4 @@ export const deleteFlow = flow => dispatch => {
       dispatch({ type: DELETE_DATA_FAIL, payload: err });
     });
 };
+*/
