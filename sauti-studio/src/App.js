@@ -14,6 +14,7 @@ import PrivateRoute from "./utils/PrivateRoute";
 import LoginForm from "./componentReactTwo/loginForm";
 import RegisterForm from "./componentReactTwo/registerForm";
 import Dashboard from "./componentReactTwo/dashboard";
+import WorkFlowList from "./componentReactTwo/workFlowList";
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
       <Route exact path="/" component={LoginForm} />
       <Route exact path="/register" component={RegisterForm} />
       <PrivateRoute path="/dashboard" component={Dashboard} />
+      <PrivateRoute patch="/workflows" component={WorkFlowList} />
     </div>
   )
 }

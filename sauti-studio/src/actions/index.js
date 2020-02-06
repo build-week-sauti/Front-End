@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { axiosWithAuth } from '../utils/axiosWithAuth'
 // Action types.
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -8,7 +8,7 @@ export const LOGIN_FAIL = "LOGIN_FAIL";
 export const CREATE_USER_START = "CREATE_USER_START";
 export const CREATE_USER_SUCCESS = "CREATE_USER_SUCCESS";
 export const CREATE_USER_FAIL = "CREATE_USER_FAIL";
-/*
+
 export const FETCH_DATA_START = "FETCH_DATA_START";
 export const FETCH_DATA_SUCCESS = "FETCH_DATA_SUCCESS";
 export const FETCH_DATA_FAIL = "FETCH_DATA_FAIL";
@@ -21,10 +21,10 @@ export const DELETE_DATA_START = "DELETE_DATA_START";
 export const DELETE_DATA_SUCCESS = "DELETE_DATA_SUCCESS";
 export const DELETE_DATA_FAIL = "DELETE_DATA_FAIL";
 
-export const APPROVE_FLOW_START = "APPROVE_FLOW_START";
-export const APPROVE_FLOW_SUCCESS = "APPROVE_FLOW_SUCCESS";
-export const APPROVE_FLOW_FAIL = "APPROVE_FLOW_FAIL";
-*/
+export const UPDATE_FLOW_START = "APPROVE_FLOW_START";
+export const UPDATE_FLOW_SUCCESS = "APPROVE_FLOW_SUCCESS";
+export const UPDATE_FLOW_FAIL = "APPROVE_FLOW_FAIL";
+
 // Create actions
 //LOGIN
 export const loginStart = data => ({
@@ -112,12 +112,12 @@ export const signUp = user => {
       });
   };
 };
-/*
+//get data such as description, location, idea, user_id
 export const fetchFlow = () => dispatch => {
   dispatch({ type: FETCH_DATA_START });
 
   axios
-    .get("https://reqres.in/api/unknown") //this api needs to be change to the backends given api
+    .get("https://sauti-studios-bw.herokuapp.com/api/inputs/") //this api needs to be change to the backends given api
     .then(res => {
       dispatch({
         type: FETCH_DATA_SUCCESS,
@@ -134,12 +134,12 @@ export const fetchFlow = () => dispatch => {
     });
 };
 
-// Create action to add flow.
+// .post the data, Create action to add flow.
 export const addFlow = flow => dispatch => {
   dispatch({ type: POST_DATA_START });
 
   axios
-    .post("https://reqres.in/api/unknown", flow) //this api needs to be changed as well
+    .post("https://sauti-studios-bw.herokuapp.com/api/inputs/", flow) //this api needs to be changed as well
     .then(res => {
       dispatch({
         type: POST_DATA_SUCCESS,
@@ -155,12 +155,12 @@ export const addFlow = flow => dispatch => {
       console.log(err);
     });
 };
-
+// to delete a flow
 export const deleteFlow = flow => dispatch => {
   dispatch({ type: DELETE_DATA_START });
 
   axiosWithAuth()
-    .delete(`https://reqres.in/api/unknown/${flow.id}`) //this api needs to be changes as well
+    .delete(`https://sauti-studios-bw.herokuapp.com/api/inputs/2${flow.user_id}`) //this api needs to be changes as well
     .then(res => {
       console.log("deleted item", res.data);
       dispatch({ type: DELETE_DATA_SUCCESS, payload: res.data });
@@ -170,4 +170,18 @@ export const deleteFlow = flow => dispatch => {
       dispatch({ type: DELETE_DATA_FAIL, payload: err });
     });
 };
-*/
+
+export const updateFlow = flow => dispatch => {
+  dispatch({ type: UPDATE_FLOW_START });
+
+  axiosWithAuth()
+    .put(`https://sauti-studios-bw.herokuapp.com/api/inputs/2`, flow) //this api needs to be changes as well
+    .then(res => {
+      console.log("update item", res.data);
+      dispatch({ type: UPDATE_FLOW_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: UPDATE_FLOW_FAIL, payload: err });
+    });
+};
