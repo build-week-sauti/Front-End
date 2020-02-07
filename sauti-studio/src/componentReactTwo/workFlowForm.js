@@ -1,34 +1,40 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { addFlow } from "../actions/index";
-
+import { addFlow, deleteFlow, updateFlow } from "../actions/index";
+import Card from "./card";
+import { Link } from "react-router-dom"
 const AddForm = props => {
-  const { addFlow, isAdded, flows } = props;
-
-  const [value, setValue] = useState({
-    description: "",
-    location: "",
-    idea: ""
-  });
-
-  const [flow, setFlow] = useState({});
+    const [idea, setIdea] = useState({
+        idea: "",
+        description: "",
+        location: "",
+        user_id: ""
+    });
 
   //handles change dynamically
   const handleChange = (name, e) => {
-    setValue({ ...value, [name]: e.target.value });
+    setIdea({ ...idea, [name]: e.target.value });
   };
+
 
   //handles submit when a new flow is created
   const handleSubmit = e => {
     e.preventDefault();
+    console.log("flowsubmited")
     const newFlow = {
-      description: value.description,
-      location: value.location,
-      idea: value.idea
+      description: idea.description,
+      location: idea.location,
+      idea: idea.idea,
+      user_id: ''
     };
-    addFlow(newFlow);
-    setValue({ description: "", location: "", idea: "" });
+    props.addFlow(newFlow);
+    setIdea({ description: "", location: "", idea: "", user_id: ""});
   };
+
+    // function for USER_ID/NOTE to convert value to a number
+    const handleUserIdChange = e => {
+        setIdea({ ...idea, user_id: Number(e.target.value) });
+      };
 
   return (
     <div>
@@ -39,7 +45,7 @@ const AddForm = props => {
             type="text"
             placeholder="Idea Name"
             name="idea"
-            value={value.idea}
+            value={idea.idea}
             onChange={e => handleChange(e.target.name, e)}
           />
         </label>
@@ -49,7 +55,7 @@ const AddForm = props => {
             type="text"
             placeholder="Description"
             name="description"
-            value={value.description}
+            value={idea.description}
             onChange={e => handleChange(e.target.name, e)}
           />
         </label>
@@ -59,22 +65,30 @@ const AddForm = props => {
             type="text"
             placeholder="Location"
             name="location"
-            value={value.location}
+            value={idea.location}
             onChange={e => handleChange(e.target.name, e)}
           />
         </label>
-        <input type="submit" value=" Add Flow" />
+        <label>User_id
+            <input 
+                name="user_id"
+                type="number"
+                placeholder="Enter flow number"
+                value={idea.user_id}
+                onChange={e => handleUserIdChange}
+            />
+        </label>
+        <button type="submit">Add Flow</button>
       </form>
-      {isAdded ? <p> Added WorkFlow!</p>: ""}
+      <Card /><br/>
+      <button><Link to="/dashboard">Dashboard</Link></button>
     </div>
-  );
+  )};
+
+const mapStateToProps =  {
+    addFlow,
+    deleteFlow,
+    updateFlow
 };
 
-const mapStateToProps = state => {
-    return {
-        isAdded: state.isAdded,
-        flows: state.flows
-    };
-};
-
-export default connect(mapStateToProps, { addFlow})(AddForm);
+export default connect(state => state, mapStateToProps)(AddForm);

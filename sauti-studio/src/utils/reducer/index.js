@@ -27,6 +27,9 @@ import {
 const initialState = {
   name: "",
   password: "",
+  idea: "",
+  description: "",
+  user_id: "",
   flows: [],
   isFetching: false,
   error: null,
@@ -111,6 +114,10 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         flows: [],
+        idea: action.payload,
+        description: action.payload,
+        location: action.payload,
+        user_id: action.payload,
         isFetching: false,
         error: null,
         isAdded: false,

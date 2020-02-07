@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchFlow, addFlow, deleteFlow } from "../actions";
+import { fetchFlow } from "../actions";
 import Card from "./card";
 import AddForm from "./workFlowForm";
 
@@ -24,7 +24,7 @@ const WorkFlowList = props => {
             {isFetching && <p>Getting flows...</p>}
             {!isFetching &&
                 !isAdded &&
-                flows.map(flow => <Card key={flow.user_id} flow={flow} />)}
+                flows.map(flow => <Card key={flows} flow={flow} />)}
         </div>
     );
 };

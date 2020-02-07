@@ -137,22 +137,22 @@ export const fetchFlow = () => dispatch => {
 // .post the data, Create action to add flow.
 export const addFlow = flow => dispatch => {
   dispatch({ type: POST_DATA_START });
-
-  axios
+console.log("add flow action call", flow);
+  axiosWithAuth()
     .post("https://sauti-studios-bw.herokuapp.com/api/inputs/", flow) //this api needs to be changed as well
     .then(res => {
       dispatch({
         type: POST_DATA_SUCCESS,
         payload: res.data
       });
-      console.log(res.data);
+      console.log("this is res.data actioncall", res.data);
     })
     .catch(err => {
       dispatch({
         type: POST_DATA_FAIL,
         payload: err
       });
-      console.log(err);
+      console.log(err.response);
     });
 };
 // to delete a flow

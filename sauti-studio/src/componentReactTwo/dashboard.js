@@ -1,9 +1,13 @@
-import React, { useState } from "react";
-import Card from "./card";
+import React from "react";
 
 const Dashboard = props => {
+
   const handleFlow = e => {
     props.history.push("/workflows");
+  };
+
+  const handleLogOut = e => {
+    props.history.push("/");
   };
 
   return (
@@ -13,7 +17,7 @@ const Dashboard = props => {
       </header>
       <button>PROFILE</button>
       <button onClick={handleFlow}>CREATE A NEW WORKFLOW</button>
-      <Card />
+      <button onClick={handleLogOut}>Log Out</button>
     </div>
   );
 };

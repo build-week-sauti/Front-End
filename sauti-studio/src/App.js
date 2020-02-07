@@ -22,8 +22,8 @@ function App() {
     <div>
       <Route exact path="/" component={LoginForm} />
       <Route exact path="/register" component={RegisterForm} />
-      <PrivateRoute path="/dashboard" component={Dashboard} />
-      <PrivateRoute patch="/workflows" component={WorkFlowList} />
+      <PrivateRoute exact path="/dashboard" component={Dashboard} />
+      <PrivateRoute exact patch="/workflows" component={WorkFlowList} />
     </div>
   )
 }

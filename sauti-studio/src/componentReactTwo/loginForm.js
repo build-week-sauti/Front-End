@@ -20,8 +20,8 @@ const LoginForm = (props) => {
     axios
       .post("https://sauti-studios-bw.herokuapp.com/api/auth/login", login)
       .then(res => {
-        console.log(res);
-        localStorage.setItem("token", res.data.payload);
+      console.log("this is data from the login component", res.data);
+        localStorage.setItem("token", res.data.token);
         props.history.push("/dashboard");
       })
       .catch(err => {

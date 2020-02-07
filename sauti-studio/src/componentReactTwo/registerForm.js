@@ -53,7 +53,7 @@ const StyledButton = styled.button`
 `;
 
 const NewUser = props => {
-  const [user, setUser] = useState([]);
+//  const [user, setUser] = useState([]);
   const [userInfo, setUserInfo] = useState({
     name: "",
     password: ""
@@ -65,12 +65,12 @@ const NewUser = props => {
     });
   };
   const handleSubmit = e => {
-    console.log("Register:", NewUser);
+    console.log("Register:", userInfo);
     e.preventDefault();
     axios
       .post("https://sauti-studios-bw.herokuapp.com/api/auth/register", userInfo)
       .then(res => {
-        console.log(res);
+        console.log(res.data);
         localStorage.setItem("token", res.data.payload);
         props.history.push("/dashboard");
       })
