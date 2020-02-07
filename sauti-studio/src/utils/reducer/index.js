@@ -17,13 +17,19 @@ import {
 
   DELETE_DATA_START,
   DELETE_DATA_SUCCESS,
-  DELETE_DATA_FAIL
+  DELETE_DATA_FAIL,
+
+  UPDATE_FLOW_START,
+  UPDATE_FLOW_SUCCESS,
+  UPDATE_FLOW_FAIL
 } from "../../actions";
 
 const initialState = {
-  username: "",
+  name: "",
   password: "",
-  primaryemail: "",
+  idea: "",
+  description: "",
+  user_id: "",
   flows: [],
   isFetching: false,
   error: null,
@@ -36,9 +42,13 @@ const reducer = (state = initialState, action) => {
     case CREATE_USER_START: {
         return {
             ...state,
-            username: action.payload,
+            name: action.payload,
             password: action.payload,
-            primaryemail: action.payload
+            flows: [],
+            isFetching: false,
+            error: null,
+            isAdded: false,
+            isDeleting: false
         };
     }
     case CREATE_USER_SUCCESS: {
@@ -55,7 +65,7 @@ const reducer = (state = initialState, action) => {
     case LOGIN_START: {
       return {
         ...state,
-        username: action.payload,
+        name: action.payload,
         password: action.payload
       };
     }
@@ -104,6 +114,10 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         flows: [],
+        idea: action.payload,
+        description: action.payload,
+        location: action.payload,
+        user_id: action.payload,
         isFetching: false,
         error: null,
         isAdded: false,

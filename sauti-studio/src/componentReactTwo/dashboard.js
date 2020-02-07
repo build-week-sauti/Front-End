@@ -1,11 +1,25 @@
 import React from "react";
 
-function Dashboard () {
-    return (
-        <div>
-            <h1>Dashboard Form</h1>
-        </div>
-    )
-}
+const Dashboard = props => {
 
-export default Dashboard
+  const handleFlow = e => {
+    props.history.push("/workflows");
+  };
+
+  const handleLogOut = e => {
+    props.history.push("/");
+  };
+
+  return (
+    <div>
+      <header>
+        <h1>Dasboard</h1>
+      </header>
+      <button>PROFILE</button>
+      <button onClick={handleFlow}>CREATE A NEW WORKFLOW</button>
+      <button onClick={handleLogOut}>Log Out</button>
+    </div>
+  );
+};
+
+export default Dashboard;

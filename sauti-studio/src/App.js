@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React from "react";
 import { Route } from "react-router-dom";
 import "./App.css";
 import PrivateRoute from "./utils/PrivateRoute";
@@ -14,6 +14,7 @@ import PrivateRoute from "./utils/PrivateRoute";
 import LoginForm from "./componentReactTwo/loginForm";
 import RegisterForm from "./componentReactTwo/registerForm";
 import Dashboard from "./componentReactTwo/dashboard";
+import WorkFlowList from "./componentReactTwo/workFlowList";
 
 function App() {
 
@@ -21,20 +22,20 @@ function App() {
     <div>
       <Route exact path="/" component={LoginForm} />
       <Route exact path="/register" component={RegisterForm} />
-      <PrivateRoute path="/dashboard" component={Dashboard} />
+      <PrivateRoute exact path="/dashboard" component={Dashboard} />
+      <PrivateRoute exact patch="/workflows" component={WorkFlowList} />
     </div>
   )
 }
 export default App;
 /*
-class App extends React.Component {
+ class App extends React.Component {
    constructor(props) {
      super(props);
      this.state = {
        isLogginActive: true
      };
    }
-=======
     if (isLogginActive) {
       //this.rightSide.classList.remove("right");
       //this.rightSide.classList.add("left");
@@ -90,8 +91,7 @@ class App extends React.Component {
        this.rightSide.classList.add("right");
      }
      this.setState(prevState => ({ isLogginActive: !prevState.isLogginActive }));
-   }
-
+ }
    render() {
      const { isLogginActive } = this.state;
      const current = isLogginActive ? "Register" : "Login";
@@ -118,7 +118,6 @@ class App extends React.Component {
      );
    }
  }
-
  const RightSide = props => {
    return (
      <div
@@ -133,8 +132,9 @@ class App extends React.Component {
    );
  };
 
+ export default App;
 
-// Create function app
+ //Create function app
 
   const [teamList, setTeamList] = useState([
     {
@@ -154,9 +154,10 @@ class App extends React.Component {
     };
     setTeamList([...teamList, newMember]);
   }
+  
 
   
 
 
-export default App; */
-
+export default App;
+*/
