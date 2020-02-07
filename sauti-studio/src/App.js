@@ -2,8 +2,6 @@ import React/*, {useState}*/ from "react";
 import "./App.css";
 import Login from "./components/login/login";
 import Register from "./components/login/register";
-//import TeamList from './components/login/user';
-//import NoteForm from './components/login/form';
 
 //import style from "./components/login/style.css";
 //import PrivateRoute from './privateRoute.js/PrivateRoute';
